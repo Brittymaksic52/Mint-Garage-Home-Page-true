@@ -201,7 +201,6 @@ export const DealerLocatorSection = (): JSX.Element => {
         },
         (error) => {
           console.log("Location access denied or unavailable");
-          // Default to Toronto if location is unavailable
           const defaultLocation = { lat: 43.6532, lng: -79.3832 };
           setUserLocation(defaultLocation);
           findNearestDealer(defaultLocation);
@@ -237,6 +236,19 @@ export const DealerLocatorSection = (): JSX.Element => {
 
   const handleDealerSelect = (dealer: DealerLocation) => {
     setSelectedDealer(dealer);
+  };
+
+  const getMarkerPosition = (city: string) => {
+    switch(city) {
+      case 'Toronto': return { left: '65%', top: '75%' };
+      case 'Barrie': return { left: '62%', top: '68%' };
+      case 'Sudbury': return { left: '50%', top: '35%' };
+      case 'Windsor': return { left: '35%', top: '85%' };
+      case 'London': return { left: '45%', top: '80%' };
+      case 'Niagara Falls': return { left: '70%', top: '82%' };
+      case 'Kingston': return { left: '75%', top: '70%' };
+      default: return { left: '50%', top: '50%' };
+    }
   };
 
   return (
@@ -309,21 +321,6 @@ export const DealerLocatorSection = (): JSX.Element => {
 
                   {/* Dealer Markers */}
                   {dealers.map((dealer) => {
-                    // Calculate position based on approximate geographic coordinates relative to Ontario's bounds
-                    // Ontario rough bounds: lat 41.7-56.9, lng -95.2 to -74.3
-                    const getMarkerPosition = (city: string) => {
-                      switch(city) {
-                        case 'Toronto': return { left: '65%', top: '75%' };
-                        case 'Barrie': return { left: '62%', top: '68%' };
-                        case 'Sudbury': return { left: '50%', top: '35%' };
-                        case 'Windsor': return { left: '35%', top: '85%' };
-                        case 'London': return { left: '45%', top: '80%' };
-                        case 'Niagara Falls': return { left: '70%', top: '82%' };
-                        case 'Kingston': return { left: '75%', top: '70%' };
-                        default: return { left: '50%', top: '50%' };
-                      }
-                    };
-                    
                     const position = getMarkerPosition(dealer.city);
                     
                     return (
@@ -339,21 +336,21 @@ export const DealerLocatorSection = (): JSX.Element => {
                         onClick={() => handleDealerSelect(dealer)}
                       >
                         <div className={`relative flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
-                        selectedDealer?.id === dealer.id 
-                          ? 'bg-green-400 border-green-300 shadow-lg shadow-green-400/50' 
-                          : 'bg-red-500 border-red-400 hover:bg-red-400'
+                          selectedDealer?.id === dealer.id 
+                            ? 'bg-green-400 border-green-300 shadow-lg shadow-green-400/50' 
+                            : 'bg-red-500 border-red-400 hover:bg-red-400'
                         }`}>
                           <MapPin className="w-4 h-4 text-white" />
                         </div>
-                      
-                      {/* Dealer Label */}
-                      <div className={`absolute top-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-xs whitespace-nowrap transition-all duration-300 ${
-                        selectedDealer?.id === dealer.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                      }`}>
-                        {dealer.city}
+                        
+                        <div className={`absolute top-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-xs whitespace-nowrap transition-all duration-300 ${
+                          selectedDealer?.id === dealer.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                        }`}>
+                          {dealer.city}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
 
                   {/* User Location Indicator */}
                   {userLocation && nearestDealer && (

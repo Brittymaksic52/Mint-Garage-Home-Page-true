@@ -67,6 +67,9 @@ export const HomePage = (): JSX.Element => {
         {/* CategorySubsect */}
         <ShopByCategorySection />
 
+        {/* TestimonialsSubsect */}
+        <CustomerTestimonialsSection />
+
         {/* ProductSubsect */}
         <ProductListSection />
 
@@ -87,9 +90,6 @@ export const HomePage = (): JSX.Element => {
             ))}
           </div>
         </div>
-
-        {/* TestimonialsSubsect */}
-        <CustomerTestimonialsSection />
 
         {/* FooterSubsect */}
         <div className="w-full">

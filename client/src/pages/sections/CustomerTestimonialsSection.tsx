@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Star, Quote } from "lucide-react";
 
 // Testimonial data for mapping
 const testimonials = [
@@ -37,73 +38,117 @@ const testimonials = [
 ];
 
 export const CustomerTestimonialsSection = (): JSX.Element => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="w-full max-w-7xl mx-auto py-16">
-      <div className="flex flex-col items-center mb-10">
-        <h2 className="font-['Montserrat',Helvetica] font-bold text-black text-[40px] text-center tracking-[0] leading-[51px] mb-4">
-          TESTIMONIALS
-        </h2>
-        <p className="font-['Montserrat',Helvetica] font-normal text-black text-base text-center tracking-[0] leading-6 max-w-4xl">
-          Meet the Mint Fam — homeowners who turned cluttered garages into dream
-          spaces. They&apos;re more than clients; they&apos;re family. Check out
-          their stories to get inspired and see how Mint Garage can do the same
-          for you!
-        </p>
+    <section 
+      ref={sectionRef}
+      className="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
+    >
+      {/* Background text */}
+      <div className={`absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-['Montserrat',Helvetica] font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none transition-all duration-1000 ${
+        isVisible ? 'translate-y-0 opacity-5' : 'translate-y-10 opacity-0'
+      }`}>
+        REVIEWS
       </div>
 
-      <Carousel className="w-full">
-        <CarouselContent className="px-4">
-          {testimonials.map((testimonial) => (
-            <CarouselItem
-              key={testimonial.id}
-              className="md:basis-1/3 lg:basis-1/3"
-            >
-              <Card className="bg-[#f9f9f9] rounded-[11px] h-[393px]">
-                <CardContent className="p-4 h-full relative">
-                  <img
-                    className="w-[57px] h-[57px] mb-4"
-                    alt="Quote left"
-                    src="/figmaAssets/quote-left.svg"
-                  />
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6">
+        {/* Section heading with subtitle */}
+        <div className={`text-center mb-16 transition-all duration-800 delay-200 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
+          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-[48px] mb-4 tracking-wide">
+            CUSTOMER TESTIMONIALS
+          </h2>
+          <p className="font-['Montserrat',Helvetica] font-normal text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+            Meet the Mint Fam — homeowners who turned cluttered garages into dream spaces. 
+            They're more than clients; they're family. Check out their stories to get inspired.
+          </p>
+        </div>
 
-                  <div className="flex items-center gap-1 mt-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <img
-                        key={i}
-                        className="w-[15px] h-[15px]"
-                        alt="Star"
-                        src="/figmaAssets/star.svg"
-                      />
-                    ))}
-                  </div>
+        {/* Testimonials Carousel */}
+        <div className={`transition-all duration-1000 delay-400 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`}>
+          <Carousel className="w-full">
+            <CarouselContent className="px-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem
+                  key={testimonial.id}
+                  className="md:basis-1/2 lg:basis-1/3"
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <Card className={`
+                    bg-gradient-to-br from-gray-800 to-gray-900 
+                    rounded-xl h-[420px] border border-gray-700 
+                    transition-all duration-300 
+                    ${hoveredCard === index ? 'transform scale-105 shadow-2xl border-green-400' : 'hover:shadow-xl'}
+                  `}>
+                    <CardContent className="p-6 h-full relative flex flex-col">
+                      {/* Quote Icon */}
+                      <div className="flex justify-between items-start mb-4">
+                        <Quote className="w-8 h-8 text-green-400 opacity-60" />
+                        <div className="flex items-center gap-1">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              className="w-4 h-4 fill-yellow-400 text-yellow-400" 
+                            />
+                          ))}
+                        </div>
+                      </div>
 
-                  <p className="font-['Montserrat',Helvetica] font-normal text-black text-sm tracking-[0] leading-[26px] mt-2">
-                    {testimonial.text}
-                  </p>
-
-                  <div className="absolute bottom-4 left-3.5 flex items-center">
-                    <img
-                      className="w-[60px] h-[60px] object-cover"
-                      alt={`${testimonial.author} profile`}
-                      src={testimonial.image}
-                    />
-                    <div className="ml-[18px]">
-                      <p className="font-['Montserrat',Helvetica] font-normal text-black text-xl tracking-[0] leading-[26px]">
-                        {testimonial.author}
+                      {/* Testimonial Text */}
+                      <p className="font-['Montserrat',Helvetica] font-normal text-gray-200 text-sm leading-relaxed flex-grow mb-6">
+                        "{testimonial.text}"
                       </p>
-                      <p className="font-['Montserrat',Helvetica] font-normal text-black text-sm tracking-[0] leading-[26px]">
-                        {testimonial.date}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="left-0" />
-        <CarouselNext className="right-0" />
-      </Carousel>
+
+                      {/* Author Info */}
+                      <div className="flex items-center mt-auto">
+                        <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">
+                            {testimonial.author.charAt(0)}
+                          </span>
+                        </div>
+                        <div className="ml-4">
+                          <p className="font-['Montserrat',Helvetica] font-semibold text-white text-base">
+                            {testimonial.author}
+                          </p>
+                          <p className="font-['Montserrat',Helvetica] font-normal text-gray-400 text-sm">
+                            {testimonial.date}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 bg-gray-800 border-gray-600 text-white hover:bg-gray-700" />
+            <CarouselNext className="right-4 bg-gray-800 border-gray-600 text-white hover:bg-gray-700" />
+          </Carousel>
+        </div>
+      </div>
     </section>
   );
 };

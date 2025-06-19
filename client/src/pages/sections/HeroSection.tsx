@@ -10,7 +10,7 @@ export const HeroSection = (): JSX.Element => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
       
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 h-screen flex items-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 h-screen flex items-center">
         <div className="max-w-4xl">
           {/* Premium Badge */}
           <div className="inline-flex items-center gap-2 bg-[#8dc049]/20 border border-[#8dc049]/30 rounded-full px-6 py-2 mb-8 backdrop-blur-sm">
@@ -41,13 +41,13 @@ export const HeroSection = (): JSX.Element => {
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 mb-16">
-            <Button className="bg-gradient-to-r from-[#8dc049] to-[#b8d66b] hover:from-[#7daf3a] hover:to-[#a6c65a] text-white font-['Montserrat',Helvetica] font-bold text-lg px-8 py-6 h-auto rounded-full shadow-2xl shadow-[#8dc049]/25 transition-all duration-300 hover:scale-105 group">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-16">
+            <Button className="bg-gradient-to-r from-[#8dc049] to-[#b8d66b] hover:from-[#7daf3a] hover:to-[#a6c65a] text-white font-['Montserrat',Helvetica] font-bold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto rounded-full shadow-2xl shadow-[#8dc049]/25 transition-all duration-300 hover:scale-105 group">
               GET FREE CONSULTATION
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
-            <Button variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-['Montserrat',Helvetica] font-semibold text-lg px-8 py-6 h-auto rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 group">
+            <Button variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-['Montserrat',Helvetica] font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 group">
               <PlayCircle className="mr-2 w-5 h-5" />
               WATCH OUR WORK
             </Button>

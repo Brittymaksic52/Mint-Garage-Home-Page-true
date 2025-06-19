@@ -93,10 +93,10 @@ export const ShopByCategorySection = (): JSX.Element => {
               EXPLORE OUR SOLUTIONS
             </span>
           </div>
-          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-5xl tracking-wide mb-4">
+          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-3xl sm:text-4xl lg:text-5xl tracking-wide mb-4">
             SHOP BY CATEGORY
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
             Discover our comprehensive range of garage transformation solutions, each designed to meet your specific needs and style preferences.
           </p>
         </div>

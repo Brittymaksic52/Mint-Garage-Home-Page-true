@@ -1,12 +1,11 @@
 import React from "react";
 import { CustomerTestimonialsSection } from "./sections/CustomerTestimonialsSection";
-import { FooterSection } from "./sections/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { MainHeaderSection } from "./sections/MainHeaderSection";
 import { ProductListSection } from "./sections/ProductListSection";
 import { ShopByCategorySection } from "./sections/ShopByCategorySection";
 import { StayConnectedSection } from "./sections/StayConnectedSection";
-import { TopHeaderSection } from "./sections/TopHeaderSection";
+import { NavigationSidebar } from "@/components/NavigationSidebar";
 
 export const HomePage = (): JSX.Element => {
   // Partner logos data for mapping
@@ -52,13 +51,13 @@ export const HomePage = (): JSX.Element => {
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white overflow-hidden w-full max-w-[1440px] relative">
-        {/* TopHeaderSubsect */}
-        <TopHeaderSection />
+        {/* Navigation Sidebar */}
+        <NavigationSidebar />
 
-        {/* HeaderSubsect */}
+        {/* Top Header (Contact Info) */}
         <MainHeaderSection />
 
-        {/* BannerSubsect */}
+        {/* Hero Section */}
         <HeroSection />
 
         {/* CategorySubsect */}

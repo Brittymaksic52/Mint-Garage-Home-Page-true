@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,25 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 export const ShopByCategorySection = (): JSX.Element => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Category data for mapping
   const categories = [
@@ -54,36 +73,48 @@ export const ShopByCategorySection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full pt-0 pb-20 bg-gradient-to-b from-white to-gray-50 overflow-hidden -mt-1">
+    <section 
+      ref={sectionRef}
+      className="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
+    >
       {/* Background text */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-['Montserrat',Helvetica] font-bold text-gray-900 text-[140px] tracking-[5.60px] leading-none z-0 select-none">
+      <div className={`absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-['Montserrat',Helvetica] font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none transition-all duration-1000 ${
+        isVisible ? 'translate-y-0 opacity-5' : 'translate-y-10 opacity-0'
+      }`}>
         CATEGORY
       </div>
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6">
         {/* Section heading with subtitle */}
-        <div className="text-center mb-16 pt-16">
-          <div className="inline-flex items-center gap-2 bg-[#8dc049]/10 border border-[#8dc049]/20 rounded-full px-6 py-2 mb-6">
+        <div className={`text-center mb-16 transition-all duration-800 delay-200 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
+          <div className="inline-flex items-center gap-2 bg-[#8dc049]/20 border border-[#8dc049]/30 rounded-full px-6 py-2 mb-6 backdrop-blur-sm">
             <span className="text-[#8dc049] font-['Montserrat',Helvetica] font-semibold text-sm">
               EXPLORE OUR SOLUTIONS
             </span>
           </div>
-          <h2 className="font-['Montserrat',Helvetica] font-bold text-black text-5xl tracking-wide mb-4">
+          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-5xl tracking-wide mb-4">
             SHOP BY CATEGORY
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Discover our comprehensive range of garage transformation solutions, each designed to meet your specific needs and style preferences.
           </p>
         </div>
 
         {/* Category cards */}
-        <div className="relative">
+        <div className={`relative transition-all duration-800 delay-400 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+        }`}>
           <Carousel className="w-full">
             <CarouselContent className="flex gap-6 pb-4">
               {categories.map((category, index) => (
                 <CarouselItem
                   key={category.id}
-                  className="flex-shrink-0 basis-auto pl-0 pr-0"
+                  className={`flex-shrink-0 basis-auto pl-0 pr-0 transition-all duration-500 ${
+                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: `${600 + index * 100}ms` }}
                 >
                   <Card 
                     className={`w-[320px] h-[420px] border-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-105 hover:shadow-2xl group ${
@@ -172,7 +203,9 @@ export const ShopByCategorySection = (): JSX.Element => {
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-16">
+        <div className={`text-center mt-16 transition-all duration-800 delay-1000 ${
+          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
           <Button className="bg-gradient-to-r from-[#8dc049] to-[#b8d66b] hover:from-[#7daf3a] hover:to-[#a6c65a] text-white font-['Montserrat',Helvetica] font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
             VIEW ALL CATEGORIES
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

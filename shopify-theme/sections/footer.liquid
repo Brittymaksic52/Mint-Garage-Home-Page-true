@@ -1,0 +1,604 @@
+{{ 'component-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="site-footer" id="footer">
+  <div class="footer-main">
+    <div class="section-container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          {% if section.settings.logo != blank %}
+            <div class="footer-logo">
+              {{ section.settings.logo | image_url: width: 200 | image_tag: 
+                 loading: 'lazy',
+                 alt: shop.name }}
+            </div>
+          {% else %}
+            <h3 class="footer-logo-text">{{ shop.name }}</h3>
+          {% endif %}
+          
+          <p class="footer-description">
+            {{ section.settings.description | default: "Transform your garage into the ultimate organized space with our premium storage solutions, flooring, and expert installation services." }}
+          </p>
+          
+          <div class="social-links">
+            {% if settings.social_facebook_url != blank %}
+              <a href="{{ settings.social_facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if settings.social_instagram_url != blank %}
+              <a href="{{ settings.social_instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if settings.social_youtube_url != blank %}
+              <a href="{{ settings.social_youtube_url }}" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            {% endif %}
+            {% if settings.social_linkedin_url != blank %}
+              <a href="{{ settings.social_linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="footer-title">{{ section.settings.menu_1_title | default: "Services" }}</h4>
+            <ul class="footer-menu">
+              {% for link in linklists[section.settings.menu_1].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">{{ section.settings.menu_2_title | default: "Products" }}</h4>
+            <ul class="footer-menu">
+              {% for link in linklists[section.settings.menu_2].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">{{ section.settings.menu_3_title | default: "Support" }}</h4>
+            <ul class="footer-menu">
+              {% for link in linklists[section.settings.menu_3].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <h4 class="footer-title">Contact Info</h4>
+          <div class="contact-info">
+            {% if settings.contact_phone != blank %}
+              <div class="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <a href="tel:{{ settings.contact_phone }}">{{ settings.contact_phone }}</a>
+              </div>
+            {% endif %}
+            
+            {% if settings.contact_email != blank %}
+              <div class="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+              </div>
+            {% endif %}
+            
+            {% if settings.contact_address != blank %}
+              <div class="contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <address>{{ settings.contact_address | newline_to_br }}</address>
+              </div>
+            {% endif %}
+          </div>
+
+          {% if section.settings.show_hours %}
+            <div class="business-hours">
+              <h5>Business Hours</h5>
+              <div class="hours-list">
+                <div class="hours-item">
+                  <span>{{ section.settings.weekdays_label | default: "Mon - Fri" }}</span>
+                  <span>{{ section.settings.weekdays_hours | default: "8:00 AM - 6:00 PM" }}</span>
+                </div>
+                <div class="hours-item">
+                  <span>{{ section.settings.saturday_label | default: "Saturday" }}</span>
+                  <span>{{ section.settings.saturday_hours | default: "9:00 AM - 4:00 PM" }}</span>
+                </div>
+                <div class="hours-item">
+                  <span>{{ section.settings.sunday_label | default: "Sunday" }}</span>
+                  <span>{{ section.settings.sunday_hours | default: "Closed" }}</span>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="section-container">
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_text | default: 'All rights reserved.' }}</p>
+        </div>
+        
+        <div class="footer-bottom-links">
+          {% for link in linklists[section.settings.footer_menu].links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </div>
+
+        {% if section.settings.show_payment_icons %}
+          <div class="payment-icons">
+            <span class="payment-label">We Accept:</span>
+            <div class="payment-methods">
+              <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                <rect width="40" height="24" rx="4" fill="#1434CB"/>
+                <path d="M16.5 8h7v8h-7z" fill="#FF5F00"/>
+                <circle cx="12" cy="12" r="6" fill="#EB001B"/>
+                <circle cx="28" cy="12" r="6" fill="#F79E1B"/>
+              </svg>
+              <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                <rect width="40" height="24" rx="4" fill="#0070BA"/>
+                <text x="20" y="15" text-anchor="middle" fill="white" font-size="8" font-weight="bold">PayPal</text>
+              </svg>
+              <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                <rect width="40" height="24" rx="4" fill="#00C853"/>
+                <text x="20" y="15" text-anchor="middle" fill="white" font-size="6" font-weight="bold">SHOP PAY</text>
+              </svg>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-dark-blue);
+    color: white;
+  }
+
+  .footer-main {
+    padding: 60px 0 40px;
+  }
+
+  .section-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-header-family);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .footer-description {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .social-links a:hover {
+    background: var(--color-primary-green);
+    transform: translateY(-2px);
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .footer-column h4 {
+    font-family: var(--font-header-family);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-primary-green);
+  }
+
+  .footer-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-menu li {
+    margin-bottom: 12px;
+  }
+
+  .footer-menu a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-menu a:hover {
+    color: var(--color-primary-green);
+  }
+
+  .footer-contact h4 {
+    font-family: var(--font-header-family);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-primary-green);
+  }
+
+  .contact-info {
+    margin-bottom: 30px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .contact-item svg {
+    color: var(--color-primary-green);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .contact-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .contact-item a:hover {
+    color: var(--color-primary-green);
+  }
+
+  .contact-item address {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .business-hours h5 {
+    font-family: var(--font-header-family);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-primary-green);
+  }
+
+  .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hours-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 25px;
+  }
+
+  .footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-bottom-links a:hover {
+    color: var(--color-primary-green);
+  }
+
+  .payment-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .payment-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .payment-methods {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .footer-content {
+      grid-template-columns: 1fr 1.5fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-links {
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-main {
+      padding: 40px 0 30px;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      max-width: 100%;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-contact {
+      text-align: left;
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .footer-bottom-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .payment-icons {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-container {
+      padding: 0 15px;
+    }
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .footer-bottom-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Brand Description",
+      "default": "Transform your garage into the ultimate organized space with our premium storage solutions, flooring, and expert installation services."
+    },
+    {
+      "type": "header",
+      "content": "Navigation Menus"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_title",
+      "label": "Menu 1 Title",
+      "default": "Services"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_title",
+      "label": "Menu 2 Title",
+      "default": "Products"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2"
+    },
+    {
+      "type": "text",
+      "id": "menu_3_title",
+      "label": "Menu 3 Title",
+      "default": "Support"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_3",
+      "label": "Menu 3"
+    },
+    {
+      "type": "header",
+      "content": "Business Hours"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hours",
+      "label": "Show Business Hours",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "weekdays_label",
+      "label": "Weekdays Label",
+      "default": "Mon - Fri"
+    },
+    {
+      "type": "text",
+      "id": "weekdays_hours",
+      "label": "Weekdays Hours",
+      "default": "8:00 AM - 6:00 PM"
+    },
+    {
+      "type": "text",
+      "id": "saturday_label",
+      "label": "Saturday Label",
+      "default": "Saturday"
+    },
+    {
+      "type": "text",
+      "id": "saturday_hours",
+      "label": "Saturday Hours",
+      "default": "9:00 AM - 4:00 PM"
+    },
+    {
+      "type": "text",
+      "id": "sunday_label",
+      "label": "Sunday Label",
+      "default": "Sunday"
+    },
+    {
+      "type": "text",
+      "id": "sunday_hours",
+      "label": "Sunday Hours",
+      "default": "Closed"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer Bottom Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show Payment Icons",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

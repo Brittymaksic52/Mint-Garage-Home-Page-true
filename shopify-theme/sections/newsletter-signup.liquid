@@ -1,0 +1,510 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+
+<section class="newsletter-section" id="newsletter">
+  <div class="section-container">
+    <div class="newsletter-content fade-in">
+      <div class="newsletter-header">
+        <h2 class="section-title">
+          {{ section.settings.section_title | default: "Stay Updated" }}
+        </h2>
+        <p class="section-subtitle">
+          {{ section.settings.section_subtitle | default: "Get the latest tips, trends, and exclusive offers for your garage transformation" }}
+        </p>
+      </div>
+
+      <div class="newsletter-form-wrapper">
+        {% form 'customer', class: 'newsletter-form' %}
+          {% if form.posted_successfully? %}
+            <div class="success-message">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20,6 9,17 4,12"></polyline>
+              </svg>
+              <span>{{ section.settings.success_message | default: "Thanks for subscribing!" }}</span>
+            </div>
+          {% else %}
+            <div class="form-group">
+              <input type="email" 
+                     name="contact[email]" 
+                     placeholder="{{ section.settings.email_placeholder | default: 'Enter your email address' }}"
+                     class="email-input"
+                     required>
+              <button type="submit" class="submit-btn">
+                {{ section.settings.button_text | default: "Subscribe" }}
+                <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12,5 19,12 12,19"></polyline>
+                </svg>
+              </button>
+            </div>
+            
+            {% if form.errors %}
+              <div class="error-message">
+                {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+              </div>
+            {% endif %}
+          {% endif %}
+          
+          <input type="hidden" name="contact[tags]" value="newsletter">
+        {% endform %}
+
+        {% if section.settings.show_privacy_note %}
+          <p class="privacy-note">
+            {{ section.settings.privacy_note | default: "We respect your privacy. Unsubscribe at any time." }}
+          </p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_benefits %}
+        <div class="newsletter-benefits">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11H1v12h8V11z"></path>
+                <path d="M20 11h-8v12h8V11z"></path>
+                <path d="M2 6l8-4 8 4"></path>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <h4>{{ section.settings.benefit_1_title | default: "Design Tips" }}</h4>
+              <p>{{ section.settings.benefit_1_description | default: "Expert advice for your garage" }}</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <h4>{{ section.settings.benefit_2_title | default: "Exclusive Deals" }}</h4>
+              <p>{{ section.settings.benefit_2_description | default: "Special discounts for subscribers" }}</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+              </svg>
+            </div>
+            <div class="benefit-text">
+              <h4>{{ section.settings.benefit_3_title | default: "New Products" }}</h4>
+              <p>{{ section.settings.benefit_3_description | default: "First access to latest solutions" }}</p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .newsletter-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--color-primary-green) 0%, var(--color-secondary-green) 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newsletter-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .section-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .newsletter-content {
+    text-align: center;
+  }
+
+  .newsletter-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-family: var(--font-header-family);
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    font-weight: bold;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .newsletter-form-wrapper {
+    margin-bottom: 50px;
+  }
+
+  .newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    display: flex;
+    gap: 0;
+    background: white;
+    border-radius: 50px;
+    padding: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .email-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 16px 24px;
+    font-size: 16px;
+    border-radius: 44px;
+    background: transparent;
+    color: var(--color-dark-blue);
+  }
+
+  .email-input::placeholder {
+    color: #94a3b8;
+  }
+
+  .submit-btn {
+    background: var(--color-dark-blue);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 44px;
+    font-family: var(--font-header-family);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .submit-btn:hover {
+    background: #0f1419;
+    transform: scale(1.05);
+  }
+
+  .submit-btn .arrow-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .submit-btn:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  .success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .success-message svg {
+    color: #22c55e;
+  }
+
+  .error-message {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fecaca;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .privacy-note {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-top: 15px;
+  }
+
+  .newsletter-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .benefit-icon {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .benefit-icon svg {
+    display: block;
+  }
+
+  .benefit-text h4 {
+    font-family: var(--font-header-family);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .benefit-text p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .newsletter-section {
+      padding: 60px 0;
+    }
+
+    .section-container {
+      padding: 0 15px;
+    }
+
+    .form-group {
+      flex-direction: column;
+      padding: 8px;
+      border-radius: 16px;
+    }
+
+    .email-input {
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    .submit-btn {
+      border-radius: 12px;
+      justify-content: center;
+    }
+
+    .newsletter-benefits {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .benefit-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .newsletter-header {
+      margin-bottom: 30px;
+    }
+
+    .newsletter-benefits {
+      margin-top: 30px;
+    }
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Form submission handling
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        const email = this.querySelector('input[type="email"]').value;
+        
+        if (!email) {
+          e.preventDefault();
+          return;
+        }
+        
+        // Add loading state
+        const submitBtn = this.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg>';
+        submitBtn.style.pointerEvents = 'none';
+        
+        // Reset after 3 seconds if form doesn't redirect
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.pointerEvents = 'auto';
+        }, 3000);
+      });
+    }
+
+    // Animation observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.newsletter-section .fade-in');
+    animatedElements.forEach(el => observer.observe(el));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Newsletter Signup",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Stay Updated"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Get the latest tips, trends, and exclusive offers for your garage transformation"
+    },
+    {
+      "type": "header",
+      "content": "Form Settings"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thanks for subscribing!"
+    },
+    {
+      "type": "header",
+      "content": "Privacy Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_privacy_note",
+      "label": "Show Privacy Note",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "privacy_note",
+      "label": "Privacy Note",
+      "default": "We respect your privacy. Unsubscribe at any time."
+    },
+    {
+      "type": "header",
+      "content": "Benefits Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show Benefits",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Benefit 1 Title",
+      "default": "Design Tips"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_description",
+      "label": "Benefit 1 Description",
+      "default": "Expert advice for your garage"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Benefit 2 Title",
+      "default": "Exclusive Deals"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_description",
+      "label": "Benefit 2 Description",
+      "default": "Special discounts for subscribers"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Benefit 3 Title",
+      "default": "New Products"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_description",
+      "label": "Benefit 3 Description",
+      "default": "First access to latest solutions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Signup"
+    }
+  ]
+}
+{% endschema %}

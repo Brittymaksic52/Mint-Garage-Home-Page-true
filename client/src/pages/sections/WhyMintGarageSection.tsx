@@ -66,7 +66,7 @@ export const WhyMintGarageSection = (): JSX.Element => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
+      className="relative w-full py-12 sm:py-16 md:py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
     >
       {/* Background text */}
       <div className={`absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-['Montserrat',Helvetica] font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none transition-all duration-1000 ${
@@ -75,15 +75,15 @@ export const WhyMintGarageSection = (): JSX.Element => {
         WHY MINT
       </div>
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section heading */}
         <div className={`text-center mb-16 transition-all duration-800 delay-200 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
-          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-[48px] mb-4 tracking-wide">
+          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-3xl sm:text-4xl lg:text-5xl mb-4 tracking-wide">
             WHY CHOOSE MINT GARAGE?
           </h2>
-          <p className="font-['Montserrat',Helvetica] font-normal text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="font-['Montserrat',Helvetica] font-normal text-gray-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
             Discover what sets us apart in the garage transformation industry. 
             Our commitment to excellence drives everything we do.
           </p>

@@ -92,7 +92,7 @@ export const BeforeAfterSection = (): JSX.Element => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
+      className="relative w-full py-12 sm:py-16 md:py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden"
     >
       {/* Background text */}
       <div className={`absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-['Montserrat',Helvetica] font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none transition-all duration-1000 ${

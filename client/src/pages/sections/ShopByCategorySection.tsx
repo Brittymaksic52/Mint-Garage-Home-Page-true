@@ -187,136 +187,19 @@ export const ShopByCategorySection = (): JSX.Element => {
           </Carousel>
         </div>
 
-        {/* Interactive Category Slider */}
-        <div className="mt-12">
-          {/* Category Navigation Tabs */}
-          <div className="flex justify-center mb-8">
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-full p-2 border border-gray-600">
-              <div className="flex gap-2">
-                {categories.map((category, index) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setActiveCategory(index)}
-                    className={`relative px-6 py-3 rounded-full font-['Montserrat',Helvetica] font-semibold text-sm transition-all duration-300 ${
-                      activeCategory === index 
-                        ? "bg-[#8dc049] text-white shadow-lg scale-105" 
-                        : "text-gray-300 hover:text-white hover:bg-gray-700/50"
-                    }`}
-                  >
-                    {category.title}
-                    {activeCategory === index && (
-                      <div className="absolute inset-0 rounded-full bg-[#8dc049]/20 animate-pulse"></div>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Active Category Display */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 p-8">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#8dc049]/10 to-transparent"></div>
-            </div>
-            
-            <div className="relative z-10">
-              {/* Category Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="font-['Montserrat',Helvetica] font-bold text-white text-3xl mb-2">
-                    {categories[activeCategory].title}
-                  </h3>
-                  <p className="text-gray-300 text-lg">
-                    {categories[activeCategory].description}
-                  </p>
-                </div>
-                <div className="text-[#8dc049] font-bold text-lg">
-                  {categories[activeCategory].products}
-                </div>
-              </div>
-
-              {/* Category Features */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Left side - Image placeholder */}
-                <div className="relative">
-                  <div className="aspect-video bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-[#8dc049]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <div className="w-8 h-8 bg-[#8dc049] rounded-lg"></div>
-                        </div>
-                        <p className="text-gray-400 font-['Montserrat',Helvetica]">
-                          {categories[activeCategory].title} Gallery
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right side - Features */}
-                <div className="space-y-4">
-                  <h4 className="font-['Montserrat',Helvetica] font-semibold text-white text-xl mb-4">
-                    Key Features:
-                  </h4>
-                  <div className="space-y-3">
-                    {[
-                      `Premium ${categories[activeCategory].title.toLowerCase()} solutions`,
-                      'Professional installation included',
-                      'Customizable designs and colors',
-                      'Lifetime warranty coverage',
-                      'Expert consultation available'
-                    ].map((feature, index) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-[#8dc049] rounded-full flex-shrink-0"></div>
-                        <span className="text-gray-300 font-['Montserrat',Helvetica]">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className="pt-6">
-                    <Button className="bg-[#8dc049] hover:bg-[#7daf3a] text-white font-['Montserrat',Helvetica] font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 group">
-                      EXPLORE {categories[activeCategory].title.toUpperCase()}
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Arrows */}
-          <div className="flex justify-center mt-6 gap-4">
+        {/* Enhanced navigation dots */}
+        <div className="flex justify-center mt-12 gap-3">
+          {categories.map((category, index) => (
             <button
-              onClick={() => setActiveCategory((prev) => prev === 0 ? categories.length - 1 : prev - 1)}
-              className="w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-600 text-white hover:bg-gray-700/50 transition-all duration-300 hover:scale-110 flex items-center justify-center"
-            >
-              <ChevronRight className="w-5 h-5 rotate-180" />
-            </button>
-            <button
-              onClick={() => setActiveCategory((prev) => prev === categories.length - 1 ? 0 : prev + 1)}
-              className="w-12 h-12 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-600 text-white hover:bg-gray-700/50 transition-all duration-300 hover:scale-110 flex items-center justify-center"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Progress Indicator */}
-          <div className="flex justify-center mt-4">
-            <div className="flex gap-2">
-              {categories.map((_, index) => (
-                <div
-                  key={index}
-                  className={`h-1 rounded-full transition-all duration-300 ${
-                    activeCategory === index 
-                      ? "w-8 bg-[#8dc049]" 
-                      : "w-2 bg-gray-600"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
+              key={category.id}
+              onClick={() => setActiveCategory(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                activeCategory === index 
+                  ? "bg-[#8dc049] scale-125" 
+                  : "bg-gray-300 hover:bg-gray-400"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Call to action */}

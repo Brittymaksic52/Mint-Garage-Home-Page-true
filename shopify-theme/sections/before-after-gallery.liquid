@@ -1,0 +1,226 @@
+{% comment %}
+Before/After Gallery section showcasing transformations
+{% endcomment %}
+
+<section class="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
+  <!-- Background text -->
+  <div class="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-montserrat font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none animate-on-scroll">
+    GALLERY
+  </div>
+
+  <div class="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section heading -->
+    <div class="text-center mb-16 animate-on-scroll">
+      <h2 class="font-montserrat font-bold text-white text-[48px] mb-4 tracking-wide">
+        {{ section.settings.section_title | default: "TRANSFORMATION GALLERY" }}
+      </h2>
+      <p class="font-montserrat font-normal text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+        {{ section.settings.section_description | default: "See the incredible transformations we've achieved for our clients. From cluttered spaces to organized sanctuaries." }}
+      </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for block in section.blocks %}
+        {% if block.type == 'transformation' %}
+          <div class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-white/10 hover:border-[{{ settings.primary_color }}]/50 transition-all duration-500 hover:scale-105 animate-on-scroll">
+            
+            <!-- Before/After Images -->
+            <div class="relative aspect-[4/3] overflow-hidden">
+              {% if block.settings.before_image != blank and block.settings.after_image != blank %}
+                <!-- Before Image -->
+                <div class="absolute inset-0 before-image">
+                  <img 
+                    src="{{ block.settings.before_image | image_url: width: 600 }}" 
+                    alt="Before transformation"
+                    class="w-full h-full object-cover"
+                  >
+                  <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-montserrat font-bold">
+                    BEFORE
+                  </div>
+                </div>
+                
+                <!-- After Image -->
+                <div class="absolute inset-0 after-image opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <img 
+                    src="{{ block.settings.after_image | image_url: width: 600 }}" 
+                    alt="After transformation"
+                    class="w-full h-full object-cover"
+                  >
+                  <div class="absolute top-4 left-4 bg-[{{ settings.primary_color }}] text-white px-3 py-1 rounded-full text-sm font-montserrat font-bold">
+                    AFTER
+                  </div>
+                </div>
+              {% elsif block.settings.before_image != blank %}
+                <img 
+                  src="{{ block.settings.before_image | image_url: width: 600 }}" 
+                  alt="{{ block.settings.project_title }}"
+                  class="w-full h-full object-cover"
+                >
+              {% else %}
+                <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                  <div class="text-6xl text-white/30">🏠</div>
+                </div>
+              {% endif %}
+              
+              <!-- Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="font-montserrat font-bold text-lg mb-2">
+                {{ block.settings.project_title | default: "Garage Transformation" }}
+              </h3>
+              <p class="font-montserrat font-normal text-gray-300 text-sm mb-3">
+                {{ block.settings.project_description | default: "Complete garage makeover with premium finishes." }}
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-[{{ settings.primary_color }}] font-montserrat font-semibold text-sm">
+                  {{ block.settings.project_location | default: "Toronto, ON" }}
+                </span>
+                <span class="text-gray-400 font-montserrat text-xs">
+                  {{ block.settings.project_date | default: "2024" }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Hover instruction -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm font-montserrat font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              Hover to see after
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Call to action -->
+    <div class="text-center mt-16 animate-on-scroll">
+      <div class="max-w-2xl mx-auto space-y-6">
+        <h3 class="font-montserrat font-bold text-white text-2xl">
+          {{ section.settings.cta_title | default: "Ready for Your Transformation?" }}
+        </h3>
+        <p class="font-montserrat font-normal text-gray-300 text-lg">
+          {{ section.settings.cta_description | default: "Let us create your dream garage space. Contact us today for a free consultation." }}
+        </p>
+        <a href="{{ section.settings.cta_url | default: '/pages/consultation' }}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] hover:from-[{{ settings.accent_color }}] hover:to-[{{ settings.primary_color }}] text-white font-montserrat font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          {{ section.settings.cta_text | default: "START YOUR PROJECT" }}
+          <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Before/After Gallery",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "TRANSFORMATION GALLERY"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "See the incredible transformations we've achieved for our clients. From cluttered spaces to organized sanctuaries."
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Ready for Your Transformation?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Let us create your dream garage space. Contact us today for a free consultation."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "START YOUR PROJECT"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL",
+      "default": "/pages/consultation"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "transformation",
+      "name": "Transformation",
+      "settings": [
+        {
+          "type": "text",
+          "id": "project_title",
+          "label": "Project Title",
+          "default": "Garage Transformation"
+        },
+        {
+          "type": "textarea",
+          "id": "project_description",
+          "label": "Project Description",
+          "default": "Complete garage makeover with premium finishes."
+        },
+        {
+          "type": "text",
+          "id": "project_location",
+          "label": "Project Location",
+          "default": "Toronto, ON"
+        },
+        {
+          "type": "text",
+          "id": "project_date",
+          "label": "Project Date",
+          "default": "2024"
+        },
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "Before Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "After Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before/After Gallery",
+      "blocks": [
+        {
+          "type": "transformation",
+          "settings": {
+            "project_title": "Modern Garage Makeover",
+            "project_description": "Complete transformation with epoxy flooring and custom storage.",
+            "project_location": "Toronto, ON"
+          }
+        },
+        {
+          "type": "transformation",
+          "settings": {
+            "project_title": "Luxury Garage Renovation",
+            "project_description": "Premium finishes with professional-grade equipment.",
+            "project_location": "Mississauga, ON"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

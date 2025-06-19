@@ -1,0 +1,282 @@
+{% comment %}
+Trusted Partners section showcasing brand partnerships
+{% endcomment %}
+
+<section class="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
+  <!-- Background text -->
+  <div class="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-montserrat font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none animate-on-scroll">
+    PARTNERS
+  </div>
+
+  <div class="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section heading -->
+    <div class="text-center mb-16 animate-on-scroll">
+      <h2 class="font-montserrat font-bold text-white text-[48px] mb-4 tracking-wide">
+        {{ section.settings.section_title | default: "TRUSTED PARTNERS" }}
+      </h2>
+      <p class="font-montserrat font-normal text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+        {{ section.settings.section_description | default: "We work with industry-leading brands to bring you the highest quality garage transformation products and solutions." }}
+      </p>
+    </div>
+
+    <!-- Partner Logos Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center animate-on-scroll">
+      {% for block in section.blocks %}
+        {% if block.type == 'partner' %}
+          <div class="group relative p-6 rounded-2xl bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-white/10 hover:border-[{{ settings.primary_color }}]/50 transition-all duration-500 hover:scale-110 w-full h-32 flex items-center justify-center">
+            {% if block.settings.partner_logo %}
+              <img 
+                src="{{ block.settings.partner_logo | image_url: width: 200 }}" 
+                alt="{{ block.settings.partner_name | default: 'Partner' }}"
+                class="max-w-full max-h-16 object-contain filter brightness-75 group-hover:brightness-100 transition-all duration-300"
+              >
+            {% else %}
+              <div class="text-center">
+                <div class="text-2xl text-white/60 group-hover:text-[{{ settings.primary_color }}] transition-colors duration-300 font-montserrat font-bold">
+                  {{ block.settings.partner_name | default: "Partner" }}
+                </div>
+              </div>
+            {% endif %}
+            
+            <!-- Hover overlay with partner info -->
+            {% if block.settings.partner_description %}
+              <div class="absolute inset-0 bg-[{{ settings.primary_color }}]/95 rounded-2xl p-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-95 group-hover:scale-100">
+                <div class="text-center">
+                  <h4 class="font-montserrat font-bold text-white text-sm mb-2">
+                    {{ block.settings.partner_name }}
+                  </h4>
+                  <p class="font-montserrat text-white/90 text-xs">
+                    {{ block.settings.partner_description }}
+                  </p>
+                </div>
+              </div>
+            {% endif %}
+
+            <!-- Click to partner website -->
+            {% if block.settings.partner_url %}
+              <a href="{{ block.settings.partner_url }}" target="_blank" class="absolute inset-0 z-10" aria-label="Visit {{ block.settings.partner_name }}"></a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Partnership Benefits -->
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll">
+      <div class="text-center space-y-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] rounded-full flex items-center justify-center mx-auto">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-montserrat font-bold text-white text-xl">
+          {{ section.settings.benefit_1_title | default: "Premium Quality" }}
+        </h3>
+        <p class="font-montserrat text-gray-300 text-sm">
+          {{ section.settings.benefit_1_description | default: "Only the finest materials from trusted manufacturers ensure lasting results." }}
+        </p>
+      </div>
+
+      <div class="text-center space-y-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] rounded-full flex items-center justify-center mx-auto">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.2C16,16.8 15.4,17.3 14.8,17.3H9.2C8.6,17.3 8,16.8 8,16.2V12.7C8,12.1 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
+          </svg>
+        </div>
+        <h3 class="font-montserrat font-bold text-white text-xl">
+          {{ section.settings.benefit_2_title | default: "Warranty Protection" }}
+        </h3>
+        <p class="font-montserrat text-gray-300 text-sm">
+          {{ section.settings.benefit_2_description | default: "Comprehensive warranty coverage backed by our manufacturer partnerships." }}
+        </p>
+      </div>
+
+      <div class="text-center space-y-4">
+        <div class="w-16 h-16 bg-gradient-to-br from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] rounded-full flex items-center justify-center mx-auto">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+          </svg>
+        </div>
+        <h3 class="font-montserrat font-bold text-white text-xl">
+          {{ section.settings.benefit_3_title | default: "Innovation First" }}
+        </h3>
+        <p class="font-montserrat text-gray-300 text-sm">
+          {{ section.settings.benefit_3_description | default: "Access to the latest innovations and cutting-edge garage solutions." }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="text-center mt-16 animate-on-scroll">
+      <div class="max-w-2xl mx-auto space-y-6">
+        <h3 class="font-montserrat font-bold text-white text-2xl">
+          {{ section.settings.cta_title | default: "Experience the Difference" }}
+        </h3>
+        <p class="font-montserrat font-normal text-gray-300 text-lg">
+          {{ section.settings.cta_description | default: "See how our partnerships translate into superior quality and value for your garage transformation." }}
+        </p>
+        <a href="{{ section.settings.cta_url | default: '/pages/consultation' }}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] hover:from-[{{ settings.accent_color }}] hover:to-[{{ settings.primary_color }}] text-white font-montserrat font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          {{ section.settings.cta_text | default: "LEARN MORE" }}
+          <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trusted Partners",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "TRUSTED PARTNERS"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "We work with industry-leading brands to bring you the highest quality garage transformation products and solutions."
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Benefit 1 Title",
+      "default": "Premium Quality"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1_description",
+      "label": "Benefit 1 Description",
+      "default": "Only the finest materials from trusted manufacturers ensure lasting results."
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Benefit 2 Title",
+      "default": "Warranty Protection"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2_description",
+      "label": "Benefit 2 Description",
+      "default": "Comprehensive warranty coverage backed by our manufacturer partnerships."
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Benefit 3 Title",
+      "default": "Innovation First"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3_description",
+      "label": "Benefit 3 Description",
+      "default": "Access to the latest innovations and cutting-edge garage solutions."
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Experience the Difference"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "See how our partnerships translate into superior quality and value for your garage transformation."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "LEARN MORE"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL",
+      "default": "/pages/consultation"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "partner",
+      "name": "Partner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "partner_name",
+          "label": "Partner Name",
+          "default": "Partner Brand"
+        },
+        {
+          "type": "image_picker",
+          "id": "partner_logo",
+          "label": "Partner Logo"
+        },
+        {
+          "type": "textarea",
+          "id": "partner_description",
+          "label": "Partner Description",
+          "default": "Industry leader in garage solutions."
+        },
+        {
+          "type": "url",
+          "id": "partner_url",
+          "label": "Partner Website"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted Partners",
+      "blocks": [
+        {
+          "type": "partner",
+          "settings": {
+            "partner_name": "Premium Flooring Co."
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "partner_name": "Storage Solutions Inc."
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "partner_name": "Workbench Pro"
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "partner_name": "Garage Systems Ltd."
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "partner_name": "Tool Organization"
+          }
+        },
+        {
+          "type": "partner",
+          "settings": {
+            "partner_name": "Custom Cabinets"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

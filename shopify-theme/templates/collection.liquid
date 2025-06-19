@@ -1,0 +1,185 @@
+{% comment %}
+Collection template
+{% endcomment %}
+
+<div class="collection-container bg-black text-white">
+  
+  <!-- Collection Header -->
+  <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="font-montserrat font-bold text-white text-4xl md:text-5xl mb-6">
+          {{ collection.title }}
+        </h1>
+        {% if collection.description != blank %}
+          <p class="font-montserrat text-gray-300 text-xl leading-relaxed max-w-2xl mx-auto">
+            {{ collection.description }}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters and Sort -->
+  <section class="py-8 bg-gray-900/50 border-b border-white/10">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+        
+        <!-- Product Count -->
+        <div class="text-gray-300 font-montserrat">
+          {{ collection.products_count }} 
+          {% if collection.products_count == 1 %}product{% else %}products{% endif %}
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="flex items-center space-x-4">
+          <label for="sort-by" class="text-white font-montserrat font-medium">Sort by:</label>
+          <select id="sort-by" 
+                  class="bg-gray-800 border border-white/20 rounded-lg px-4 py-2 text-white font-montserrat focus:outline-none focus:border-green-400"
+                  onchange="location.href = this.value">
+            <option value="{{ collection.url }}?sort_by=created-descending" 
+                    {% if collection.sort_by == 'created-descending' %}selected{% endif %}>
+              Newest
+            </option>
+            <option value="{{ collection.url }}?sort_by=price-ascending" 
+                    {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>
+              Price: Low to High
+            </option>
+            <option value="{{ collection.url }}?sort_by=price-descending" 
+                    {% if collection.sort_by == 'price-descending' %}selected{% endif %}>
+              Price: High to Low
+            </option>
+            <option value="{{ collection.url }}?sort_by=title-ascending" 
+                    {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>
+              A-Z
+            </option>
+            <option value="{{ collection.url }}?sort_by=best-selling" 
+                    {% if collection.sort_by == 'best-selling' %}selected{% endif %}>
+              Best Selling
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-20">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+      {% if collection.products.size > 0 %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {% for product in collection.products %}
+            <div class="group card-gradient rounded-2xl overflow-hidden card-hover">
+              
+              <!-- Product Image -->
+              <div class="relative aspect-square overflow-hidden bg-gray-800">
+                <a href="{{ product.url }}">
+                  {% if product.featured_image %}
+                    <img 
+                      src="{{ product.featured_image | image_url: width: 500 }}" 
+                      alt="{{ product.title }}"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    >
+                  {% else %}
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                      <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                </a>
+
+                <!-- Sale Badge -->
+                {% if product.compare_at_price > product.price %}
+                  <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-montserrat font-bold">
+                    SALE
+                  </div>
+                {% endif %}
+
+                <!-- Quick Add Button -->
+                {% if product.available %}
+                  <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <form action="/cart/add" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                      <button type="submit" 
+                              class="w-full bg-green-500 hover:bg-green-600 text-white font-montserrat font-bold py-3 px-6 rounded-full transition-all duration-300 add-to-cart-btn">
+                        Quick Add
+                      </button>
+                    </form>
+                  </div>
+                {% endif %}
+              </div>
+
+              <!-- Product Info -->
+              <div class="p-6 space-y-3">
+                <a href="{{ product.url }}">
+                  <h3 class="font-montserrat font-bold text-white text-lg group-hover:text-green-400 transition-colors duration-300">
+                    {{ product.title }}
+                  </h3>
+                </a>
+
+                <!-- Product Type -->
+                {% if product.type != blank %}
+                  <p class="text-gray-400 font-montserrat text-sm">
+                    {{ product.type }}
+                  </p>
+                {% endif %}
+
+                <!-- Price -->
+                <div class="flex items-center space-x-3">
+                  <span class="text-green-400 font-montserrat font-bold text-xl">
+                    {{ product.price | money }}
+                  </span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="text-gray-400 line-through font-montserrat">
+                      {{ product.compare_at_price | money }}
+                    </span>
+                  {% endif %}
+                </div>
+
+                <!-- Product Description Preview -->
+                {% if product.description != blank %}
+                  <p class="text-gray-300 font-montserrat text-sm line-clamp-2">
+                    {{ product.description | strip_html | truncate: 80 }}
+                  </p>
+                {% endif %}
+
+                <!-- Availability -->
+                {% unless product.available %}
+                  <div class="text-red-400 font-montserrat font-medium text-sm">
+                    Sold Out
+                  </div>
+                {% endunless %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if paginate.pages > 1 %}
+          <div class="mt-16 flex justify-center">
+            {% render 'pagination', paginate: paginate %}
+          </div>
+        {% endif %}
+
+      {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-20">
+          <svg class="w-24 h-24 text-gray-400 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z"/>
+          </svg>
+          <h2 class="font-montserrat font-bold text-white text-2xl mb-4">
+            No products found
+          </h2>
+          <p class="font-montserrat text-gray-300 text-lg mb-8">
+            We couldn't find any products in this collection.
+          </p>
+          <a href="{{ routes.all_products_collection_url }}" 
+             class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-montserrat font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+            View All Products
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+</div>

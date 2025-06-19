@@ -1,0 +1,80 @@
+{% comment %}
+Meta tags for SEO and social sharing
+{% endcomment %}
+
+<!-- Basic meta tags -->
+<meta name="description" content="{{ page_description | default: shop.description | default: shop.name }}">
+<meta name="keywords" content="garage renovation, garage storage, garage flooring, garage organization, garage makeover, Ontario garage solutions">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ page_title }}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}">
+<meta property="og:description" content="{{ page_description | default: shop.description | default: shop.name }}">
+<meta property="og:site_name" content="{{ shop.name }}">
+
+{% if settings.social_image %}
+  <meta property="og:image" content="{{ settings.social_image | image_url: width: 1200 }}">
+{% elsif collection.featured_image %}
+  <meta property="og:image" content="{{ collection.featured_image | image_url: width: 1200 }}">
+{% elsif product.featured_image %}
+  <meta property="og:image" content="{{ product.featured_image | image_url: width: 1200 }}">
+{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ canonical_url }}">
+<meta name="twitter:title" content="{{ page_title }}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}">
+<meta name="twitter:description" content="{{ page_description | default: shop.description | default: shop.name }}">
+
+{% if settings.social_image %}
+  <meta name="twitter:image" content="{{ settings.social_image | image_url: width: 1200 }}">
+{% elsif collection.featured_image %}
+  <meta name="twitter:image" content="{{ collection.featured_image | image_url: width: 1200 }}">
+{% elsif product.featured_image %}
+  <meta name="twitter:image" content="{{ product.featured_image | image_url: width: 1200 }}">
+{% endif %}
+
+{% if settings.twitter_handle %}
+  <meta name="twitter:site" content="@{{ settings.twitter_handle }}">
+{% endif %}
+
+<!-- Additional SEO -->
+<meta name="robots" content="index,follow">
+<meta name="googlebot" content="index,follow">
+
+{% if template contains 'product' %}
+  <!-- Product specific meta -->
+  <meta property="product:price:amount" content="{{ product.price | money_without_currency }}">
+  <meta property="product:price:currency" content="{{ shop.currency }}">
+  <meta property="product:availability" content="{% if product.available %}in stock{% else %}out of stock{% endif %}">
+  <meta property="product:brand" content="{{ product.vendor }}">
+{% endif %}
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  "url": "{{ shop.url }}",
+  "logo": "{% if settings.logo %}{{ settings.logo | image_url: width: 200 }}{% endif %}",
+  "description": "{{ shop.description | escape }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CA",
+    "addressRegion": "Ontario"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "{{ settings.contact_phone }}",
+    "contactType": "customer service"
+  },
+  "sameAs": [
+    {% if settings.facebook_url %}"{{ settings.facebook_url }}",{% endif %}
+    {% if settings.instagram_url %}"{{ settings.instagram_url }}",{% endif %}
+    {% if settings.youtube_url %}"{{ settings.youtube_url }}",{% endif %}
+    {% if settings.linkedin_url %}"{{ settings.linkedin_url }}"{% endif %}
+  ]
+}
+</script>

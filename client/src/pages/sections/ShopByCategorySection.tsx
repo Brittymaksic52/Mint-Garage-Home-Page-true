@@ -83,7 +83,7 @@ export const ShopByCategorySection = (): JSX.Element => {
         CATEGORY
       </div>
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section heading with subtitle */}
         <div className={`text-center mb-16 transition-all duration-800 delay-200 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'

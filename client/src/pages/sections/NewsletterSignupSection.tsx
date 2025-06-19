@@ -58,14 +58,14 @@ export const NewsletterSignupSection = (): JSX.Element => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
+      className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-black bg-opacity-5"></div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
@@ -76,10 +76,10 @@ export const NewsletterSignupSection = (): JSX.Element => {
               STAY UPDATED
             </span>
           </div>
-          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-5xl tracking-wide mb-6">
+          <h2 className="font-['Montserrat',Helvetica] font-bold text-white text-3xl sm:text-4xl lg:text-5xl tracking-wide mb-6">
             GET GARAGE INSPIRATION
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Join thousands of homeowners transforming their garages. Get exclusive tips, before & after showcases, 
             special offers, and early access to new products delivered to your inbox.
           </p>
@@ -122,7 +122,7 @@ export const NewsletterSignupSection = (): JSX.Element => {
                   </Button>
                 </div>
                 
-                <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-gray-400">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-[#8dc049]" />
                     <span>Weekly garage tips</span>

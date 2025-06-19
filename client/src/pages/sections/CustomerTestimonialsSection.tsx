@@ -90,11 +90,11 @@ export const CustomerTestimonialsSection = (): JSX.Element => {
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
           <Carousel className="w-full overflow-visible">
-            <CarouselContent className="px-4 overflow-visible">
+            <CarouselContent className="px-8 pb-12" style={{ overflow: 'visible' }}>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem
                   key={testimonial.id}
-                  className="md:basis-1/2 lg:basis-1/3 p-2"
+                  className="md:basis-1/2 lg:basis-1/3 p-6"
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >

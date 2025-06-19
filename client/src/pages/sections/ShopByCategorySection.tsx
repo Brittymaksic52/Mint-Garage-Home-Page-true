@@ -112,17 +112,17 @@ export const ShopByCategorySection = (): JSX.Element => {
               loop: true,
             }}
           >
-            <CarouselContent className="flex gap-6 pb-12 px-8" style={{ overflow: 'visible' }}>
+            <CarouselContent className="flex pb-12 px-8" style={{ overflow: 'visible' }}>
               {categories.map((category, index) => (
                 <CarouselItem
                   key={category.id}
-                  className={`flex-shrink-0 basis-auto p-6 transition-all duration-500 ${
+                  className={`basis-[320px] flex-shrink-0 px-3 py-6 transition-all duration-500 ${
                     isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}
                   style={{ transitionDelay: `${600 + index * 100}ms` }}
                 >
                   <Card 
-                    className={`w-[320px] h-[420px] border-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-105 hover:shadow-2xl group ${
+                    className={`w-full h-[420px] border-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 transform hover:scale-105 hover:shadow-2xl group ${
                       hoveredCategory === index ? 'shadow-2xl' : 'shadow-lg'
                     }`}
                     onMouseEnter={() => setHoveredCategory(index)}

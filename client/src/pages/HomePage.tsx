@@ -2,7 +2,7 @@ import React from "react";
 import { CustomerTestimonialsSection } from "./sections/CustomerTestimonialsSection";
 import { HeroSection } from "./sections/HeroSection";
 import { MainHeaderSection } from "./sections/MainHeaderSection";
-import { ProductListSection } from "./sections/ProductListSection";
+import { NewsletterSignupSection } from "./sections/NewsletterSignupSection";
 import { ShopByCategorySection } from "./sections/ShopByCategorySection";
 import { StayConnectedSection } from "./sections/StayConnectedSection";
 import { BeforeAfterSection } from "./sections/BeforeAfterSection";
@@ -46,8 +46,8 @@ export const HomePage = (): JSX.Element => {
         {/* Dealer Locator Section */}
         <DealerLocatorSection />
 
-        {/* ProductSubsect */}
-        <ProductListSection />
+        {/* Newsletter Signup Section */}
+        <NewsletterSignupSection />
 
         {/* FooterSubsect */}
         <div className="w-full">

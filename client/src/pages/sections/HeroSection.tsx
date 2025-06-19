@@ -8,7 +8,6 @@ export const HeroSection = (): JSX.Element => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 bg-[url(/figmaAssets/mask-group.png)] bg-cover bg-center opacity-60"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
-      
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 h-screen flex items-center">
         <div className="max-w-4xl">
@@ -28,7 +27,7 @@ export const HeroSection = (): JSX.Element => {
             <span className="font-bold text-white text-5xl md:text-7xl lg:text-8xl leading-tight block mt-2">
               Into Something
             </span>
-            <span className="font-bold text-transparent bg-gradient-to-r from-[#8dc049] to-[#b8d66b] bg-clip-text text-5xl md:text-7xl lg:text-8xl leading-tight block">
+            <span className="font-bold text-transparent bg-gradient-to-r from-[#8dc049] to-[#b8d66b] bg-clip-text text-5xl md:text-7xl lg:text-8xl leading-tight block pt-[5px] pb-[5px]">
               Extraordinary
             </span>
           </h1>
@@ -70,7 +69,6 @@ export const HeroSection = (): JSX.Element => {
           </div>
         </div>
       </div>
-
       {/* Decorative Elements */}
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#8dc049]/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-[#8dc049]/5 rounded-full blur-2xl"></div>

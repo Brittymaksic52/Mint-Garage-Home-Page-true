@@ -6,6 +6,8 @@ import { ProductListSection } from "./sections/ProductListSection";
 import { ShopByCategorySection } from "./sections/ShopByCategorySection";
 import { StayConnectedSection } from "./sections/StayConnectedSection";
 import { BeforeAfterSection } from "./sections/BeforeAfterSection";
+import { WhyMintGarageSection } from "./sections/WhyMintGarageSection";
+import { MintMyGarageSection } from "./sections/MintMyGarageSection";
 import { NavigationSidebar } from "@/components/NavigationSidebar";
 
 export const HomePage = (): JSX.Element => {
@@ -69,6 +71,12 @@ export const HomePage = (): JSX.Element => {
 
         {/* TestimonialsSubsect */}
         <CustomerTestimonialsSection />
+
+        {/* Why Mint Garage Section */}
+        <WhyMintGarageSection />
+
+        {/* Mint My Garage YouTube Section */}
+        <MintMyGarageSection />
 
         {/* ProductSubsect */}
         <ProductListSection />

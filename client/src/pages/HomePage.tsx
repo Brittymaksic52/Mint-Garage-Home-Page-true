@@ -61,7 +61,9 @@ export const HomePage = (): JSX.Element => {
         <HeroSection />
 
         {/* CategorySubsect */}
-        <ShopByCategorySection />
+        <div className="relative -mt-px">
+          <ShopByCategorySection />
+        </div>
 
         {/* ProductSubsect */}
         <ProductListSection />

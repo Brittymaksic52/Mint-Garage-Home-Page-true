@@ -54,7 +54,7 @@ export const ShopByCategorySection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full py-20 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+    <section className="relative w-full pt-0 pb-20 bg-gradient-to-b from-white to-gray-50 overflow-hidden -mt-1">
       {/* Background text */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-['Montserrat',Helvetica] font-bold text-gray-900 text-[140px] tracking-[5.60px] leading-none z-0 select-none">
         CATEGORY
@@ -62,7 +62,7 @@ export const ShopByCategorySection = (): JSX.Element => {
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6">
         {/* Section heading with subtitle */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 pt-16">
           <div className="inline-flex items-center gap-2 bg-[#8dc049]/10 border border-[#8dc049]/20 rounded-full px-6 py-2 mb-6">
             <span className="text-[#8dc049] font-['Montserrat',Helvetica] font-semibold text-sm">
               EXPLORE OUR SOLUTIONS

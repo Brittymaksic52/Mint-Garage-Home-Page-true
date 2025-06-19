@@ -9,15 +9,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ArrowRight, ChevronRight } from "lucide-react";
-import { ShopByCategorySkeleton } from "@/components/LoadingSkeletons";
-import { useSimulateLoading } from "@/hooks/useLoadingState";
 
 export const ShopByCategorySection = (): JSX.Element => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const isLoading = useSimulateLoading(2000);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,10 +71,6 @@ export const ShopByCategorySection = (): JSX.Element => {
       products: "20+ Products",
     },
   ];
-
-  if (isLoading) {
-    return <ShopByCategorySkeleton />;
-  }
 
   return (
     <section 

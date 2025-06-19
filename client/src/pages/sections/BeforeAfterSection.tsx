@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, ArrowRight, Star, Award } from "lucide-react";
-import { BeforeAfterSkeleton } from "@/components/LoadingSkeletons";
-import { useSimulateLoading } from "@/hooks/useLoadingState";
 
 export const BeforeAfterSection = (): JSX.Element => {
   const [activeProject, setActiveProject] = useState(0);
@@ -12,8 +10,6 @@ export const BeforeAfterSection = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const isLoading = useSimulateLoading(1500);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -92,10 +88,6 @@ export const BeforeAfterSection = (): JSX.Element => {
   };
 
   const currentProject = projects[activeProject];
-
-  if (isLoading) {
-    return <BeforeAfterSkeleton />;
-  }
 
   return (
     <section 

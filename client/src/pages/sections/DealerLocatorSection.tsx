@@ -74,13 +74,13 @@ export const DealerLocatorSection = (): JSX.Element => {
     },
     {
       id: 2,
-      name: "Mint Garage Ottawa",
-      address: "456 Bank Street",
-      city: "Ottawa",
+      name: "Mint Garage Barrie",
+      address: "456 Dunlop Street East",
+      city: "Barrie",
       province: "ON",
-      postalCode: "K1S 3T5",
-      phone: "(613) 555-0456",
-      email: "ottawa@mintgarage.ca",
+      postalCode: "L4M 1A5",
+      phone: "(705) 555-0456",
+      email: "barrie@mintgarage.ca",
       hours: {
         weekdays: "8:30 AM - 5:30 PM",
         saturday: "9:00 AM - 3:00 PM",
@@ -89,17 +89,17 @@ export const DealerLocatorSection = (): JSX.Element => {
       rating: 4.8,
       reviews: 89,
       services: ["Garage Organization", "Wall Systems", "Epoxy Flooring", "Ceiling Storage"],
-      coordinates: { lat: 45.4215, lng: -75.6972 }
+      coordinates: { lat: 44.3894, lng: -79.6903 }
     },
     {
       id: 3,
-      name: "Mint Garage Hamilton",
-      address: "789 James Street North",
-      city: "Hamilton",
+      name: "Mint Garage Sudbury",
+      address: "789 Elm Street",
+      city: "Sudbury",
       province: "ON",
-      postalCode: "L8L 1K1",
-      phone: "(905) 555-0789",
-      email: "hamilton@mintgarage.ca",
+      postalCode: "P3C 1T8",
+      phone: "(705) 555-0789",
+      email: "sudbury@mintgarage.ca",
       hours: {
         weekdays: "9:00 AM - 6:00 PM",
         saturday: "10:00 AM - 4:00 PM",
@@ -108,17 +108,17 @@ export const DealerLocatorSection = (): JSX.Element => {
       rating: 4.7,
       reviews: 156,
       services: ["Swiss Trax Flooring", "Custom Cabinetry", "Lighting Solutions", "Tool Organization"],
-      coordinates: { lat: 43.2557, lng: -79.8711 }
+      coordinates: { lat: 46.4917, lng: -80.9930 }
     },
     {
       id: 4,
-      name: "Mint Garage London",
-      address: "321 Richmond Street",
-      city: "London",
+      name: "Mint Garage Windsor",
+      address: "321 Ouellette Avenue",
+      city: "Windsor",
       province: "ON",
-      postalCode: "N6A 3C2",
+      postalCode: "N9A 1B2",
       phone: "(519) 555-0321",
-      email: "london@mintgarage.ca",
+      email: "windsor@mintgarage.ca",
       hours: {
         weekdays: "9:00 AM - 5:00 PM",
         saturday: "10:00 AM - 3:00 PM",
@@ -127,7 +127,64 @@ export const DealerLocatorSection = (): JSX.Element => {
       rating: 4.6,
       reviews: 73,
       services: ["Garage Conversions", "Insulation Services", "Smart Storage", "Paint & Coatings"],
+      coordinates: { lat: 42.3149, lng: -83.0364 }
+    },
+    {
+      id: 5,
+      name: "Mint Garage London",
+      address: "654 Richmond Street",
+      city: "London",
+      province: "ON",
+      postalCode: "N6A 3G1",
+      phone: "(519) 555-0654",
+      email: "london@mintgarage.ca",
+      hours: {
+        weekdays: "9:00 AM - 6:00 PM",
+        saturday: "9:00 AM - 4:00 PM",
+        sunday: "Closed"
+      },
+      rating: 4.8,
+      reviews: 112,
+      services: ["Complete Transformations", "Premium Flooring", "Custom Storage", "Lighting Systems"],
       coordinates: { lat: 42.9849, lng: -81.2453 }
+    },
+    {
+      id: 6,
+      name: "Mint Garage Niagara",
+      address: "987 Queen Street",
+      city: "Niagara Falls",
+      province: "ON",
+      postalCode: "L2E 2L2",
+      phone: "(905) 555-0987",
+      email: "niagara@mintgarage.ca",
+      hours: {
+        weekdays: "8:00 AM - 5:00 PM",
+        saturday: "10:00 AM - 3:00 PM",
+        sunday: "Closed"
+      },
+      rating: 4.9,
+      reviews: 95,
+      services: ["Epoxy Coatings", "Wall Organization", "Overhead Storage", "Climate Control"],
+      coordinates: { lat: 43.0896, lng: -79.0849 }
+    },
+    {
+      id: 7,
+      name: "Mint Garage Kingston",
+      address: "147 Princess Street",
+      city: "Kingston",
+      province: "ON",
+      postalCode: "K7L 1A8",
+      phone: "(613) 555-0147",
+      email: "kingston@mintgarage.ca",
+      hours: {
+        weekdays: "9:00 AM - 5:30 PM",
+        saturday: "9:00 AM - 4:00 PM",
+        sunday: "Closed"
+      },
+      rating: 4.7,
+      reviews: 84,
+      services: ["Garage Makeovers", "Storage Solutions", "Flooring Installation", "Design Services"],
+      coordinates: { lat: 44.2312, lng: -76.4860 }
     }
   ];
 
@@ -222,13 +279,27 @@ export const DealerLocatorSection = (): JSX.Element => {
                   {/* Ontario Map Illustration */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg 
-                      viewBox="0 0 400 300" 
+                      viewBox="0 0 500 400" 
                       className="w-full h-full opacity-20"
                       fill="none"
                     >
-                      {/* Simplified Ontario outline */}
+                      {/* Accurate Ontario outline based on reference image */}
                       <path 
-                        d="M50 150 L80 100 L150 80 L200 90 L280 100 L320 120 L350 150 L340 200 L300 230 L250 240 L200 235 L150 225 L100 210 L70 180 Z" 
+                        d="M80 50 L120 45 L160 40 L200 35 L240 30 L280 35 L320 40 L360 50 L390 70 L420 100 L440 130 L450 160 L455 190 L460 220 L455 250 L445 280 L430 310 L410 340 L385 365 L355 380 L320 390 L280 395 L240 390 L200 385 L160 375 L120 360 L90 340 L70 315 L55 285 L50 250 L55 220 L50 190 L45 160 L40 130 L35 100 L40 70 L50 50 L65 40 Z" 
+                        stroke="rgba(34, 197, 94, 0.3)" 
+                        strokeWidth="2" 
+                        fill="rgba(34, 197, 94, 0.1)"
+                      />
+                      {/* Hudson Bay area (northern indent) */}
+                      <path 
+                        d="M200 35 L240 30 L280 35 L300 25 L320 20 L340 25 L360 35 L360 50 L340 45 L320 40 L300 45 L280 50 L240 45 L200 40 Z" 
+                        stroke="rgba(34, 197, 94, 0.3)" 
+                        strokeWidth="2" 
+                        fill="rgba(34, 197, 94, 0.1)"
+                      />
+                      {/* Great Lakes indentations */}
+                      <path 
+                        d="M385 365 L355 380 L320 390 L290 385 L270 375 L250 365 L240 350 L250 340 L270 330 L300 335 L330 345 L360 355 Z" 
                         stroke="rgba(34, 197, 94, 0.3)" 
                         strokeWidth="2" 
                         fill="rgba(34, 197, 94, 0.1)"
@@ -237,25 +308,43 @@ export const DealerLocatorSection = (): JSX.Element => {
                   </div>
 
                   {/* Dealer Markers */}
-                  {dealers.map((dealer, index) => (
-                    <div
-                      key={dealer.id}
-                      className={`absolute cursor-pointer transition-all duration-300 ${
-                        selectedDealer?.id === dealer.id ? 'scale-125 z-10' : 'hover:scale-110'
-                      }`}
-                      style={{
-                        left: `${20 + (index * 80)}px`,
-                        top: `${100 + (index % 2 * 80)}px`
-                      }}
-                      onClick={() => handleDealerSelect(dealer)}
-                    >
-                      <div className={`relative flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
+                  {dealers.map((dealer) => {
+                    // Calculate position based on approximate geographic coordinates relative to Ontario's bounds
+                    // Ontario rough bounds: lat 41.7-56.9, lng -95.2 to -74.3
+                    const getMarkerPosition = (city: string) => {
+                      switch(city) {
+                        case 'Toronto': return { left: '65%', top: '75%' };
+                        case 'Barrie': return { left: '62%', top: '68%' };
+                        case 'Sudbury': return { left: '50%', top: '35%' };
+                        case 'Windsor': return { left: '35%', top: '85%' };
+                        case 'London': return { left: '45%', top: '80%' };
+                        case 'Niagara Falls': return { left: '70%', top: '82%' };
+                        case 'Kingston': return { left: '75%', top: '70%' };
+                        default: return { left: '50%', top: '50%' };
+                      }
+                    };
+                    
+                    const position = getMarkerPosition(dealer.city);
+                    
+                    return (
+                      <div
+                        key={dealer.id}
+                        className={`absolute cursor-pointer transition-all duration-300 transform -translate-x-1/2 -translate-y-1/2 ${
+                          selectedDealer?.id === dealer.id ? 'scale-125 z-10' : 'hover:scale-110'
+                        }`}
+                        style={{
+                          left: position.left,
+                          top: position.top
+                        }}
+                        onClick={() => handleDealerSelect(dealer)}
+                      >
+                        <div className={`relative flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-300 ${
                         selectedDealer?.id === dealer.id 
                           ? 'bg-green-400 border-green-300 shadow-lg shadow-green-400/50' 
                           : 'bg-red-500 border-red-400 hover:bg-red-400'
-                      }`}>
-                        <MapPin className="w-4 h-4 text-white" />
-                      </div>
+                        }`}>
+                          <MapPin className="w-4 h-4 text-white" />
+                        </div>
                       
                       {/* Dealer Label */}
                       <div className={`absolute top-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-80 text-white px-2 py-1 rounded text-xs whitespace-nowrap transition-all duration-300 ${

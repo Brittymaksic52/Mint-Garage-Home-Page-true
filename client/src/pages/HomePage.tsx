@@ -5,6 +5,7 @@ import { MainHeaderSection } from "./sections/MainHeaderSection";
 import { ProductListSection } from "./sections/ProductListSection";
 import { ShopByCategorySection } from "./sections/ShopByCategorySection";
 import { StayConnectedSection } from "./sections/StayConnectedSection";
+import { BeforeAfterSection } from "./sections/BeforeAfterSection";
 import { NavigationSidebar } from "@/components/NavigationSidebar";
 
 export const HomePage = (): JSX.Element => {
@@ -59,6 +60,9 @@ export const HomePage = (): JSX.Element => {
 
         {/* Hero Section */}
         <HeroSection />
+
+        {/* Before & After Section */}
+        <BeforeAfterSection />
 
         {/* CategorySubsect */}
         <ShopByCategorySection />

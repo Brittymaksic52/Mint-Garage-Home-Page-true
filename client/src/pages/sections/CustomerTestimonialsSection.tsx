@@ -86,15 +86,15 @@ export const CustomerTestimonialsSection = (): JSX.Element => {
         </div>
 
         {/* Testimonials Carousel */}
-        <div className={`transition-all duration-1000 delay-400 ${
+        <div className={`transition-all duration-1000 delay-400 overflow-visible ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
-          <Carousel className="w-full">
-            <CarouselContent className="px-4">
+          <Carousel className="w-full overflow-visible">
+            <CarouselContent className="px-4 overflow-visible">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem
                   key={testimonial.id}
-                  className="md:basis-1/2 lg:basis-1/3"
+                  className="md:basis-1/2 lg:basis-1/3 p-2"
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >

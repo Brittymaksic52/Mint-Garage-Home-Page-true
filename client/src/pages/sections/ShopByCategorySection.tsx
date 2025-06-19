@@ -102,21 +102,21 @@ export const ShopByCategorySection = (): JSX.Element => {
         </div>
 
         {/* Category cards */}
-        <div className={`relative transition-all duration-800 delay-400 ${
+        <div className={`relative transition-all duration-800 delay-400 overflow-visible ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
           <Carousel 
-            className="w-full"
+            className="w-full overflow-visible"
             opts={{
               align: "start",
               loop: true,
             }}
           >
-            <CarouselContent className="flex gap-6 pb-4">
+            <CarouselContent className="flex gap-6 pb-4 px-4 overflow-visible">
               {categories.map((category, index) => (
                 <CarouselItem
                   key={category.id}
-                  className={`flex-shrink-0 basis-auto pl-0 pr-0 transition-all duration-500 ${
+                  className={`flex-shrink-0 basis-auto p-2 transition-all duration-500 ${
                     isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}
                   style={{ transitionDelay: `${600 + index * 100}ms` }}

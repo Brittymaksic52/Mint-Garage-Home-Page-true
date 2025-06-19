@@ -197,7 +197,7 @@ export const ShopByCategorySection = (): JSX.Element => {
         <div className={`text-center mt-16 transition-all duration-800 delay-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
-          <Button className="bg-gradient-to-r from-[#8dc049] to-[#b8d66b] hover:from-[#7daf3a] hover:to-[#a6c65a] text-white font-['Montserrat',Helvetica] font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          <Button className="pt-[34px] pb-[34px] mt-[-25px] mb-[-25px] pl-[72px] pr-[72px] ml-[0px] mr-[0px] bg-[#a1ca58] text-white font-['Montserrat',Helvetica] font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
             VIEW ALL CATEGORIES
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>

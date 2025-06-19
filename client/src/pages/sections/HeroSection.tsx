@@ -46,7 +46,7 @@ export const HeroSection = (): JSX.Element => {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
-            <Button variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10 font-['Montserrat',Helvetica] font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 group">
+            <Button variant="outline" className="border-2 border-white/30 text-[#1d283b] hover:bg-white/10 font-['Montserrat',Helvetica] font-semibold text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 group">
               <PlayCircle className="mr-2 w-5 h-5" />
               WATCH OUR WORK
             </Button>

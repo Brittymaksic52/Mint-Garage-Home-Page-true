@@ -1,0 +1,225 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you were looking for does not exist."
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "current": "Current"
+    },
+    "forms": {
+      "required": "Required",
+      "email": "Email",
+      "name": "Name",
+      "message": "Message",
+      "phone": "Phone",
+      "submit": "Submit"
+    },
+    "social": {
+      "share": "Share",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "search": "Search",
+      "cart": "Cart",
+      "account": "Account"
+    },
+    "footer": {
+      "newsletter_placeholder": "Enter your email",
+      "newsletter_button": "Subscribe",
+      "newsletter_success": "Thanks for subscribing!",
+      "copyright": "© {{ year }} {{ shop_name }}. All rights reserved."
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your cart is currently empty",
+      "continue_shopping": "Continue shopping",
+      "update": "Update cart",
+      "checkout": "Checkout",
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_quantity_error_html": "You can only add [quantity] of this item to your cart."
+    }
+  },
+  "products": {
+    "general": {
+      "view_all": "View all",
+      "no_products": "No products found"
+    },
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "price": "Price",
+      "compare_at": "Compare at",
+      "vendor": "Vendor",
+      "sku": "SKU",
+      "barcode": "Barcode",
+      "features": "Features",
+      "specifications": "Specifications",
+      "reviews": "Reviews",
+      "shipping": "Shipping & Returns",
+      "share": "Share this product"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "No products found",
+      "view_all": "View all products",
+      "clear_all": "Clear all filters"
+    },
+    "sorting": {
+      "title": "Sort by",
+      "featured": "Featured",
+      "best_selling": "Best selling",
+      "alphabetically_az": "Alphabetically, A-Z",
+      "alphabetically_za": "Alphabetically, Z-A",
+      "price_low_to_high": "Price, low to high",
+      "price_high_to_low": "Price, high to low",
+      "date_old_to_new": "Date, old to new",
+      "date_new_to_old": "Date, new to old"
+    },
+    "filters": {
+      "title": "Filter",
+      "availability": "Availability",
+      "price": "Price",
+      "vendor": "Brand",
+      "type": "Product type",
+      "clear": "Clear",
+      "apply": "Apply",
+      "show_results": "Show results"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "details": "Account Details",
+      "view": "View Account"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot your password?",
+      "sign_in": "Sign In",
+      "create_account": "Create account"
+    },
+    "register": {
+      "title": "Register",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create"
+    },
+    "orders": {
+      "title": "Order History",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default",
+      "add_new": "Add a New Address",
+      "edit_address": "Edit address",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country",
+      "province": "Province",
+      "zip": "Postal/Zip Code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add Address",
+      "update": "Update Address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    }
+  },
+  "homepage": {
+    "sections": {
+      "hero": {
+        "primary_button": "Get Free Consultation",
+        "secondary_button": "Watch Our Work"
+      },
+      "featured_products": {
+        "title": "Featured Products",
+        "subtitle": "Discover our most popular garage transformation solutions",
+        "view_all": "View All Products"
+      },
+      "testimonials": {
+        "title": "What Our Customers Say",
+        "subtitle": "Real stories from satisfied customers who transformed their garages"
+      },
+      "newsletter": {
+        "title": "Stay Updated",
+        "subtitle": "Get the latest tips, trends, and exclusive offers for your garage transformation",
+        "placeholder": "Enter your email address",
+        "button": "Subscribe",
+        "success": "Thanks for subscribing!",
+        "privacy": "We respect your privacy. Unsubscribe at any time."
+      }
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to content",
+    "close": "Close",
+    "link_messages": {
+      "new_window": "Opens in a new window.",
+      "external": "Opens external website."
+    },
+    "loading": "Loading...",
+    "selection_help": "Press the space key then arrow keys to make a selection.",
+    "unit_price_separator": "per",
+    "refresh_page": "Choosing a selection results in a full page refresh.",
+    "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars"
+  },
+  "blogs": {
+    "article": {
+      "blog": "Blog",
+      "read_more": "Read more",
+      "tags": "Tags",
+      "older_post": "Older Post",
+      "newer_post": "Newer Post",
+      "back_to_blog": "Back to {{ title }}",
+      "comment_form_title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "share": "Share this article",
+      "success": "Your comment was posted successfully! Thank you!",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated."
+    }
+  },
+  "onboarding": {
+    "product_title": "Example product title",
+    "product_description": "This area is used to describe your product's details. Tell customers about the look, feel, and style of your product. Add details on color, materials used, sizing, and where it was made.",
+    "collection_title": "Example collection title",
+    "blog_title": "Your post's title",
+    "blog_excerpt": "Your store hasn't published any blog posts yet. A blog can be used to talk about new product launches, tips, or other news you want to share with your customers.",
+    "blog_author": "Author name",
+    "no_content": "This section doesn't currently include any content. Add content to this section using the sidebar."
+  }
+}

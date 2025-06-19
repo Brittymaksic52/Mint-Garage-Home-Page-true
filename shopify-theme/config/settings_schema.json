@@ -1,0 +1,135 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mint Garage",
+    "theme_version": "1.0.0",
+    "theme_author": "Mint Garage Inc",
+    "theme_documentation_url": "https://mintgarage.ca/theme-docs",
+    "theme_support_url": "https://mintgarage.ca/support"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary_green",
+        "label": "Primary Green",
+        "default": "#8dc049"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_green",
+        "label": "Secondary Green",
+        "default": "#b8d66b"
+      },
+      {
+        "type": "color",
+        "id": "color_dark_blue",
+        "label": "Dark Blue",
+        "default": "#1d283b"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color",
+        "default": "#a1ca58"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_base_font",
+        "default": "helvetica_n4",
+        "label": "Base font",
+        "info": "Used for most text"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "montserrat_n4",
+        "label": "Heading font",
+        "info": "Used for headings and buttons"
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Hero Title",
+        "default": "Transform Your Garage Into The Ultimate Space"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_subtitle",
+        "label": "Hero Subtitle",
+        "default": "From cluttered chaos to organized perfection. Discover premium storage solutions, flooring, and organization systems that maximize your garage's potential."
+      },
+      {
+        "type": "text",
+        "id": "hero_cta_primary",
+        "label": "Primary CTA Button",
+        "default": "GET FREE CONSULTATION"
+      },
+      {
+        "type": "text",
+        "id": "hero_cta_secondary",
+        "label": "Secondary CTA Button",
+        "default": "WATCH OUR WORK"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_url",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin_url",
+        "label": "LinkedIn URL"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Phone Number",
+        "default": "(416) 123-4567"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email Address",
+        "default": "info@mintgarage.ca"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_address",
+        "label": "Address",
+        "default": "123 Main Street\nToronto, ON M5V 3A8\nCanada"
+      }
+    ]
+  }
+]

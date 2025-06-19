@@ -11,7 +11,6 @@ import {
 import { ArrowRight, ChevronRight } from "lucide-react";
 
 export const ShopByCategorySection = (): JSX.Element => {
-  const [activeCategory, setActiveCategory] = useState(0);
   const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -181,26 +180,13 @@ export const ShopByCategorySection = (): JSX.Element => {
               ))}
             </CarouselContent>
             
-            {/* Navigation arrows */}
-            <CarouselPrevious className="left-4 bg-white/90 hover:bg-white border-gray-200 text-gray-700 hover:text-black" />
-            <CarouselNext className="right-4 bg-white/90 hover:bg-white border-gray-200 text-gray-700 hover:text-black" />
+            {/* Enhanced Navigation arrows */}
+            <CarouselPrevious className="left-6 w-12 h-12 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-green-500 hover:to-green-400 border-2 border-gray-600 hover:border-green-400 text-white hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110" />
+            <CarouselNext className="right-6 w-12 h-12 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-green-500 hover:to-green-400 border-2 border-gray-600 hover:border-green-400 text-white hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110" />
           </Carousel>
         </div>
 
-        {/* Enhanced navigation dots */}
-        <div className="flex justify-center mt-12 gap-3">
-          {categories.map((category, index) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                activeCategory === index 
-                  ? "bg-[#8dc049] scale-125" 
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-            />
-          ))}
-        </div>
+
 
         {/* Call to action */}
         <div className={`text-center mt-16 transition-all duration-800 delay-1000 ${

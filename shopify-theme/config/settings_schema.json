@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Mint Garage",
+    "theme_version": "1.0.0",
+    "theme_author": "Mint Garage",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary Color",
+        "default": "#8dc049"
+      },
+      {
+        "type": "color",
+        "id": "secondary_color",
+        "label": "Secondary Color",
+        "default": "#b8d66b"
+      },
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent Color",
+        "default": "#7daf3a"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading font",
+        "default": "montserrat_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font",
+        "default": "montserrat_n4"
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "Hero Title",
+        "default": "TRANSFORM YOUR GARAGE INTO A PREMIUM SPACE"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_description",
+        "label": "Hero Description",
+        "default": "Professional garage renovation and organization solutions that maximize your space and elevate your home's value."
+      },
+      {
+        "type": "url",
+        "id": "hero_video_url",
+        "label": "Hero Video URL"
+      }
+    ]
+  }
+]

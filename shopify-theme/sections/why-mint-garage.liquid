@@ -1,0 +1,206 @@
+{% comment %}
+Why Mint Garage section with key benefits
+{% endcomment %}
+
+<section class="relative w-full py-20 bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
+  <!-- Background text -->
+  <div class="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 font-montserrat font-bold text-white text-[140px] tracking-[5.60px] leading-none z-0 select-none animate-on-scroll">
+    WHY US
+  </div>
+
+  <div class="relative z-10 w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section heading -->
+    <div class="text-center mb-16 animate-on-scroll">
+      <h2 class="font-montserrat font-bold text-white text-[48px] mb-4 tracking-wide">
+        {{ section.settings.section_title | default: "WHY MINT GARAGE?" }}
+      </h2>
+      <p class="font-montserrat font-normal text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+        {{ section.settings.section_description | default: "We're not just another garage company. We're your partners in creating extraordinary spaces that enhance your lifestyle and increase your home's value." }}
+      </p>
+    </div>
+
+    <!-- Benefits Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+          <div class="group text-center space-y-4 p-6 rounded-2xl bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm border border-white/10 hover:border-[{{ settings.primary_color }}]/50 transition-all duration-500 hover:scale-105 animate-on-scroll">
+            <!-- Icon -->
+            <div class="mx-auto w-16 h-16 bg-gradient-to-br from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              {% if block.settings.benefit_icon == 'quality' %}
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              {% elsif block.settings.benefit_icon == 'experience' %}
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              {% elsif block.settings.benefit_icon == 'warranty' %}
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.2C16,16.8 15.4,17.3 14.8,17.3H9.2C8.6,17.3 8,16.8 8,16.2V12.7C8,12.1 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                </svg>
+              {% elsif block.settings.benefit_icon == 'support' %}
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                </svg>
+              {% else %}
+                <div class="text-2xl">{{ block.settings.custom_icon | default: "✓" }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-2">
+              <h3 class="font-montserrat font-bold text-white text-xl group-hover:text-[{{ settings.primary_color }}] transition-colors duration-300">
+                {{ block.settings.benefit_title | default: "Premium Quality" }}
+              </h3>
+              <p class="font-montserrat font-normal text-gray-300 text-sm leading-relaxed">
+                {{ block.settings.benefit_description | default: "We use only the highest quality materials and proven installation techniques." }}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center animate-on-scroll">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <h3 class="font-montserrat font-bold text-white text-2xl">
+          {{ section.settings.cta_title | default: "Ready to Transform Your Garage?" }}
+        </h3>
+        <p class="font-montserrat font-normal text-gray-300 text-lg">
+          {{ section.settings.cta_description | default: "Join thousands of satisfied customers who have trusted us with their garage transformation." }}
+        </p>
+        <a href="{{ section.settings.cta_url | default: '/pages/consultation' }}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[{{ settings.primary_color }}] to-[{{ settings.secondary_color }}] hover:from-[{{ settings.accent_color }}] hover:to-[{{ settings.primary_color }}] text-white font-montserrat font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+          {{ section.settings.cta_text | default: "GET YOUR FREE QUOTE" }}
+          <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Mint Garage",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "WHY MINT GARAGE?"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "We're not just another garage company. We're your partners in creating extraordinary spaces that enhance your lifestyle and increase your home's value."
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Ready to Transform Your Garage?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Join thousands of satisfied customers who have trusted us with their garage transformation."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "GET YOUR FREE QUOTE"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL",
+      "default": "/pages/consultation"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_title",
+          "label": "Benefit Title",
+          "default": "Premium Quality"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit_description",
+          "label": "Benefit Description",
+          "default": "We use only the highest quality materials and proven installation techniques."
+        },
+        {
+          "type": "select",
+          "id": "benefit_icon",
+          "label": "Icon",
+          "options": [
+            { "value": "quality", "label": "Quality Star" },
+            { "value": "experience", "label": "Experience Check" },
+            { "value": "warranty", "label": "Warranty Shield" },
+            { "value": "support", "label": "Support" },
+            { "value": "custom", "label": "Custom" }
+          ],
+          "default": "quality"
+        },
+        {
+          "type": "text",
+          "id": "custom_icon",
+          "label": "Custom Icon (emoji or text)",
+          "default": "✓"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Mint Garage",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_title": "Premium Quality",
+            "benefit_description": "We use only the highest quality materials and proven installation techniques.",
+            "benefit_icon": "quality"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_title": "15+ Years Experience",
+            "benefit_description": "Over a decade of experience transforming garages across Ontario.",
+            "benefit_icon": "experience"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_title": "Lifetime Warranty",
+            "benefit_description": "We stand behind our work with comprehensive warranty coverage.",
+            "benefit_icon": "warranty"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_title": "Expert Support",
+            "benefit_description": "Dedicated support team to help you every step of the way.",
+            "benefit_icon": "support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

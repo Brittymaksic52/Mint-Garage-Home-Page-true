@@ -109,7 +109,7 @@ export const ShopByCategorySection = (): JSX.Element => {
             className="w-full overflow-visible"
             opts={{
               align: "start",
-              loop: true,
+              loop: false,
             }}
           >
             <CarouselContent className="flex pb-12 px-8" style={{ overflow: 'visible' }}>

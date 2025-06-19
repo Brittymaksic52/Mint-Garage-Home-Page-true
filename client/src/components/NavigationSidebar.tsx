@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Menu, X, Search, User, ShoppingCart, ChevronRight } from "lucide-react";
+import { NavigationSidebarSkeleton } from "@/components/LoadingSkeletons";
+import { useSimulateLoading } from "@/hooks/useLoadingState";
 
 export const NavigationSidebar = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
+  const isLoading = useSimulateLoading(800);
 
   const navItems = [
     { label: "HOME", active: true },
@@ -34,7 +37,10 @@ export const NavigationSidebar = (): JSX.Element => {
             <SheetTitle>Navigation Menu</SheetTitle>
             <SheetDescription>Site navigation and menu options</SheetDescription>
           </SheetHeader>
-          <div className="flex flex-col h-full">
+          {isLoading ? (
+            <NavigationSidebarSkeleton />
+          ) : (
+            <div className="flex flex-col h-full">
             {/* Header with Logo */}
             <div className="p-6 border-b border-white/20">
               <div className="flex items-center justify-between mb-4">
@@ -106,6 +112,7 @@ export const NavigationSidebar = (): JSX.Element => {
               </Button>
             </div>
           </div>
+          )}
         </SheetContent>
       </Sheet>
     </>

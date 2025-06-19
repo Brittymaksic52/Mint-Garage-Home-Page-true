@@ -88,10 +88,9 @@ export const HomePage = (): JSX.Element => {
         {/* TestimonialsSubsect */}
         <CustomerTestimonialsSection />
 
-        {/* FooterSubsect and OverlapWrapperSubsect */}
+        {/* FooterSubsect */}
         <div className="w-full">
           <StayConnectedSection />
-          <FooterSection />
         </div>
 
         {/* Featured Products Section - removed as it doesn't match the image layout */}

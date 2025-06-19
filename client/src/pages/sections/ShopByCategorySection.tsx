@@ -105,7 +105,13 @@ export const ShopByCategorySection = (): JSX.Element => {
         <div className={`relative transition-all duration-800 delay-400 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         }`}>
-          <Carousel className="w-full">
+          <Carousel 
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
             <CarouselContent className="flex gap-6 pb-4">
               {categories.map((category, index) => (
                 <CarouselItem
@@ -121,7 +127,6 @@ export const ShopByCategorySection = (): JSX.Element => {
                     }`}
                     onMouseEnter={() => setHoveredCategory(index)}
                     onMouseLeave={() => setHoveredCategory(null)}
-                    onClick={() => setActiveCategory(index)}
                   >
                     <CardContent className="p-0 h-full relative">
                       <div
